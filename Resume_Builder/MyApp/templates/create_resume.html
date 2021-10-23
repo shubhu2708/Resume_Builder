@@ -1,0 +1,157 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+ <head>
+
+ <meta charset="utf-8"/>
+
+ <title>
+
+Resume Builder
+
+ </title>
+
+ <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+
+ </head>
+
+ <body style="background-color: rgb(254,235,238);">
+
+ <!-- partial:index.partial.html -->
+
+ <div id="javascript_header">
+
+ </div>
+
+ <form method="POST" enctype="multipart/form-data">
+
+ {% csrf_token %}
+
+ <div class="form__header">
+
+ <h1>
+
+ Build Your Resume
+
+ </h1>
+ {% if user.is_authenticated %}
+    <h2 style="color: coral;"> {{user.username}}</h2>
+{% endif %}
+ <p>
+
+ Enter the fields below to generate a resume file.
+
+ </p>
+ {% for message in messages %}
+ <ul class="messages">
+ 
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:red;">{{ message }}</li>
+ </ul>
+ {% endfor %}
+
+ </div><br>
+
+
+ <div class=" container mx-12 form-control-lg" style="width: 500px;">
+    <div class="row mb-5 ">
+        <div class=" col-8">
+         
+            <!-- <h1>Resume Builder</h1> -->
+            <!-- <hr> --> 
+        </div>
+        <div class="mb-3 col-8">
+            <label> Choose a File to upload: </label>
+            <input type="file" id="myFile" /> <br /><br />
+        </div>
+        <div class="mb-3 col-8">
+            <label for="exampleInputEmail1" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your First name">
+        </div>
+        <div class="mb-3 col-8">
+            <label for="exampleInputEmail1" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your Last name">
+        </div>
+        <div class="mb-3 col-8">
+            <label for="" class="form-label">Phone No</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone no">
+        </div>
+
+        <div class="mb-3 col-8">
+        <label for="" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email">
+        </div>
+        
+        <div class="mb-3 col-8">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
+        </div>
+        <div class="mb-3 col-8">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="mb-3 col-5">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city">
+        </div>
+        <div class="mb-3 col-3">
+            <label for="inputState" class="form-label">State</label>
+            <input type="text" class="form-control" id="state" name="state">
+            
+        
+        </div>
+        <div class="mb-3 col-8">
+            <label for="" class="form-label">Degree</label>
+            <input type="text" class="form-control" id="degree" name="degree" placeholder="Enter your UG/PG with percentile">
+        </div>
+
+        <div class="mb-3 col-8">
+            <label for="" class="form-label">Intermediate</label>
+            <input type="text" class="form-control" id="inter" name="inter" placeholder="Enter your Intermediate">
+        </div>
+
+        <div class="mb-3 col-8">
+            <label for="" class="form-label">Highschool</label>
+            <input type="text" class="form-control" id="highschool" name="highschool" placeholder="Enter your highschool">
+        </div>
+
+        <div class="mb-3 col-8">
+            <label for="" class="form-label">About You</label>
+            <input type="text" class="form-control" id="about_you" name="about_you" placeholder="">
+        </div>
+
+        <div class="mb-3 col-8">
+            <label for="" class="form-label">Experience</label>
+            <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter your experience">
+        </div>
+
+        <div class=" col-8">
+            <label for="" class="form-label">Skills</label>
+            <input type="text" class="form-control input-lg" id="skills" name="skills" placeholder="Enter your skills">
+        </div>
+    </div> <br>
+</div>
+
+ <input class="btn btn-success" type="submit" value="Submit Info"/>
+
+ <br>
+
+ <a class="button" href="/"> Back to home</a>
+ </form>
+ <!-- Copyright -->
+ <div class="footer" style="margin-top: 50px; position: relative; width: 100%; display: inline; background-color: thistle; text-align: center;">
+    <div>© 2020 Copyright: <span style="color: darkblue;">Shubhu</span></div>
+</div>
+<!-- Copyright -->
+ <!-- partial -->
+
+ <script src="{% static 'js/script.js' %}">
+
+ </script>
+
+ </body>
+
+</html>

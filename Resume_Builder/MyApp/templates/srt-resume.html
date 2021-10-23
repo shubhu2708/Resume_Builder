@@ -1,0 +1,224 @@
+{% load static%}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+
+	<title>Jobaaj Rsume Builder</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" /> 
+	<link href="{% static 'css/resume.css' %}" rel="stylesheet"/>
+	<script src="{% static 'js/pdf.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+</head>
+<body>
+
+<div id="doc2" class="yui-t7" style="width: 800px;">
+	<div id="inner">
+	
+		<div id="hd">
+			<div class="yui-gc">
+				<div class="yui-u first">
+					{% if resume_info.name %}
+
+					<p style="font-size: 30px;  font-style: italic;">{{resume_info.name}}</p>
+				   
+					{% endif %}
+					<!-- <h1>Jonathan Doe</h1>
+					<h2>Web Designer, Director</h2> -->
+				</div>
+
+				<div class="yui-u">
+					<div class="contact-info">
+						<!-- <h3><a id="pdf" href="#">Download PDF</a></h3> -->
+						<!-- <h3><a href="mailto:name@yourdomain.com">name@yourdomain.com</a></h3> -->
+						<!-- <h3>(313) - 867-5309</h3> -->
+						{% if resume_info.email %}
+							<strong>{{resume_info.email}}</strong>
+						{% endif %} 
+						{% if resume_info.phone %}
+							<strong>ph.no: {{resume_info.phone}}</strong>
+						{% endif %}
+					</div><!--// .contact-info -->
+				</div>
+			</div><!--// .yui-gc -->
+		</div><!--// hd -->
+
+		<div id="bd">
+			<div id="yui-main">
+				<div class="yui-b">
+					<!-- <div class="yui-gf">
+						<div class="yui-u first">
+							<h2>Profile</h2>
+						</div>
+						<div class="yui-u">
+							<p class="enlarge">
+								Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change. 
+							</p>
+						</div>
+					</div>// .yui-gf -->
+					{% if resume_info.about_you%}
+						<div class="yui-gf">
+							<div class="yui-u first">
+								<h2>About</h2>
+							</div>
+							<div class="yui-u">
+									<h3>{{resume_info.about_you}}</h3>
+							</div>
+						</div>
+					{% endif %}
+					{% if resume_info.skills %}
+					<div class="yui-gf">
+						<div class="yui-u first">
+							<h2>Skills</h2>
+						</div>
+						<div class="yui-u">
+								 <h3>{{resume_info.skills}}</h3>
+							
+								<!-- <div class="talent">
+									<h2>Web Design</h2>
+									<p>Assertively exploit wireless initiatives rather than synergistic core competencies.	</p>
+								</div>
+
+								<div class="talent">
+									<h2>Interface Design</h2>
+									<p>Credibly streamline mission-critical value with multifunctional functionalities.	 </p>
+								</div>
+
+								<div class="talent">
+									<h2>Project Direction</h2>
+									<p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
+								</div> -->
+						</div>
+					{% endif %}
+
+					</div><!--// .yui-gf -->
+
+					<!-- <div class="yui-gf">
+						<div class="yui-u first">
+							<h2>Technical</h2>
+						</div>
+						<div class="yui-u">
+							<ul class="talent">
+								<li>XHTML</li>
+								<li>CSS</li>
+								<li class="last">Javascript</li>
+							</ul>
+
+							<ul class="talent">
+								<li>Jquery</li>
+								<li>PHP</li>
+								<li class="last">CVS / Subversion</li>
+							</ul>
+
+							<ul class="talent">
+								<li>OS X</li>
+								<li>Windows XP/Vista</li>
+								<li class="last">Linux</li>
+							</ul>
+						</div>
+					</div>// .yui-gf -->
+					{% if resume_info.experience %}
+						<div class="yui-gf">
+							<div class="yui-u first">
+								<h2>Experience</h2>
+							</div><!--// .yui-u -->
+
+							<div class="yui-u">
+								<h3>{{resume_info.experience}}</h3>
+								<!-- <div class="job">
+									<h2>Facebook</h2>
+									<h3>Senior Interface Designer</h3>
+									<h4>2005-2007</h4>
+									<p>Intrinsicly enable optimal core competencies through corporate relationships. Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence. </p>
+								</div>
+
+								<div class="job">
+									<h2>Apple Inc.</h2>
+									<h3>Senior Interface Designer</h3>
+									<h4>2005-2007</h4>
+									<p>Progressively reconceptualize multifunctional "outside the box" thinking through inexpensive methods of empowerment. Compellingly morph extensive niche markets with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than scalable benefits. </p>
+								</div>
+
+								<div class="job">
+									<h2>Microsoft</h2>
+									<h3>Principal and Creative Lead</h3>
+									<h4>2004-2005</h4>
+									<p>Intrinsicly transform flexible manufactured products without excellent intellectual capital. Energistically evisculate orthogonal architectures through covalent action items. Assertively incentivize sticky platforms without synergistic materials. </p>
+								</div>
+
+
+								<div class="job last">
+									<h2>International Business Machines (IBM)</h2>
+									<h3>Lead Web Designer</h3>
+									<h4>2001-2004</h4>
+									<p>Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsicly iterate excellent e-tailers with timely e-markets.</p>
+								</div> -->
+
+							</div><!--// .yui-u -->
+						</div><!--// .yui-gf -->
+					{% endif %}
+					{% if resume_info.highschool %}
+						<div class="yui-gf last">
+							<div class="yui-u first">
+								<h2>Education</h2>
+							</div>
+							{% if resume_info.degree %}
+								<div class="yui-u"> 
+									<h3>Graduation :</h3><br>
+									<h4 style="padding-left: 20px;"> * {{resume_info.degree}}</h4><br>
+								</div>
+							{% endif %}
+							{% if resume_info.inter %}
+								<div class="yui-u">
+									<h3>Intermediate :</h3><br>	
+									<h4 style="padding-left: 20px;"> * {{resume_info.inter}}</h4><br>
+									
+								</div>
+							{% endif %}
+							{% if resume_info.inter %}
+								<div class="yui-u" >
+									<h3>HighSchool :</h3><br>
+									<h4 style="padding-left: 20px;"> * {{resume_info.highschool}}</h4><br>
+								</div>
+							{% endif %}
+						<div class="yui-gf"></div>
+						</div><!--// .yui-gf -->
+					{% endif %}
+
+				</div><!--// .yui-b -->
+			</div><!--// yui-main -->
+		</div><!--// bd -->
+
+		<!-- <div id="ft">
+			<p>Jonathan Doe &mdash; <a href="mailto:name@yourdomain.com">name@yourdomain.com</a> &mdash; (313) - 867-5309</p>
+		</div>// footer -->
+
+	</div>  <!-- // inner -->
+</div><!--// doc -->
+<br><br>
+<div class="col-md-12  mb-3">
+	<button class="btn btn-dark" id="download"> download pdf</button>
+</div>
+<a class="btn btn-danger" style="padding-left: 20px;" href="/">Back to home</a><br><br>
+<footer class="bg-light text-center text-lg-start">
+	<!-- Copyright -->
+	<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+	  © 2020 Copyright:
+	  <a class="text-dark" href="https://jobaaj.com/">Jobaaj | Get the Job Done</a>
+	</div>
+	<!-- Copyright -->
+  </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+

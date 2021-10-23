@@ -1,0 +1,404 @@
+{% load static %}
+<html>
+
+<head>
+
+ <title>{% if resume_info.full_name %}{{resume_info.full_name}}'s Resume {% endif %}</title>
+ <script src="{% static './pdf.js' %}"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+ <style>
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
+
+body {
+
+ font-family: 'Poppins', sans-serif;
+
+ background: #fafafa;
+
+ color: rgba(0,0,0,0.75);
+
+}
+
+h1 {
+
+ color: rgba(0,0,0,0.9);
+
+}
+
+h1, p {
+
+ box-sizing: border-box;
+
+ margin: 0px;
+
+ padding: 0px 24px;
+
+}
+
+.line-break {
+
+ width: 100%;
+
+ height: 1px;
+
+ margin: 16px auto;
+
+ border-bottom: 1px solid #eee;
+
+}
+
+.resume {
+
+ border-radius: 8px;
+
+ box-sizing: border-box;
+
+ display: flex;
+
+ flex-direction: column;
+
+ max-width: 800px;
+
+ margin: 48px auto;
+
+ padding: 16px 0px;
+
+ background: white;
+
+ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.14);
+
+}
+
+.resume-group {
+
+ box-sizing: border-box;
+
+ padding: 8px 0px;
+
+ width: 100%;
+
+ display: flex;
+
+ border-left: 3px solid transparent;
+
+ transition: 0.2s;
+
+}
+
+.resume-group:hover {
+
+ border-left: 3px solid #64FFDA;
+
+}
+
+.left-col {
+
+ width: 35%;
+
+}
+
+.right-col {
+
+ width: 65%;
+
+}
+
+.instructions {
+
+ opacity: 0.5;
+
+ text-align: center;
+
+ font-size: 0.8rem;
+
+ margin: 16px auto;
+
+}
+
+</style>
+
+</head>
+
+<body>
+ <div class="resume" id="doc2">
+ {% if resume_info.name %}  
+
+ <!-- <img class="card-img-top" style="height: 20rem;" src="{% static 'images/temp1.png' %}" alt="Card image cap"> -->
+ 
+    
+ {% endif %}
+ {% if resume_info.name %}
+
+ <h1>{{resume_info.name}}</h1>
+
+ {% endif %}
+
+ {% if resume_info.email %}
+
+ <p>{{resume_info.email}}</p>
+
+ {% endif %}
+
+ {% if resume_info.phone %}
+
+ <p>{{resume_info.phone}}</p>
+
+ {% endif %}
+
+ {% if resume_info.address %} 
+
+ <p>{{resume_info.address}}</p>
+
+ {% endif %}
+
+ <div class="line-break"></div>
+
+ {% if resume_info.about_you%}
+
+ <div class="resume-group">
+
+ <div class="left-col"><p><b>ABOUT ME</b></p></div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.about_you}}</p>
+</div>
+
+</div>
+
+{% endif %}
+
+{% if resume_info.career %}
+
+<div class="resume-group"><div class="left-col">
+
+ <p><b>CAREER OBJECTIVES</b></p>
+
+</div>
+
+<div class="right-col">
+
+ <p>{{resume_info.career}}</p>
+
+</div>
+
+</div>
+
+{% endif %}
+{% if resume_info.highschool %}
+
+<div class="resume-group">
+    <div class="left-col">
+
+        <p><b>Education</b> </p>
+       
+        </div>
+</div>
+{% endif %}
+
+{% if resume_info.degree %}
+
+<div class="resume-group">
+
+ <div class="left-col">
+
+ <p> Graduation : </p>
+
+ </div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.degree}}</p>
+
+</div>
+
+</div>
+
+{% endif %}
+
+{% if resume_info.inter %}
+
+<div class="resume-group">
+
+ <div class="left-col">
+
+ <p>Intermediate :</p>
+
+ </div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.inter}}</p>
+
+</div>
+
+</div>
+
+{% endif %}
+
+{% if resume_info.highschool %}
+
+<div class="resume-group">
+
+ <div class="left-col">
+
+ <p>HighSchool :</p>
+
+ </div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.highschool}}</p>
+
+</div>
+
+</div>
+
+{% endif %}
+
+{% if resume_info.experience %}
+
+<div class="resume-group">
+
+ <div class="left-col">
+
+ <p><b>EMPLOYMENT EXPERIENCE</b></p>
+
+ </div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.experience}}</p>
+
+ </div>
+
+</div>
+{% endif %}
+
+{% if resume_info.skills %}
+
+<div class="resume-group"><div class="left-col">
+
+ <p><b>Skills</b></p>
+
+</div>
+
+<div class="right-col">
+
+ <p>{{resume_info.skills}}</p>
+
+</div>
+
+</div>
+
+{% endif %}
+{% if resume_info.job_1__start %}
+
+<div class="resume-group">
+
+ <div class="left-col">
+
+ <p>{{resume_info.job_1__start}} to {{resume_info.job_1__end}}</p>
+
+ </div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.job_1__details}}
+
+</p>
+
+</div>
+
+</div>
+
+{% endif %}
+
+{% if resume_info.job_2__start %}
+
+<div class="resume-group">
+
+ <div class="left-col">
+
+ <p>{{resume_info.job_2__start}} to {{resume_info.job_2__end}}</p>
+
+ </div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.job_2__details}}
+
+</p>
+
+</div>
+
+</div>
+
+{% endif %}
+
+{% if resume_info.job_3__start %}
+
+<div class="resume-group">
+
+ <div class="left-col">
+
+ <p>{{resume_info.job_3__start}} to {{resume_info.job_3__end}}</p>
+
+ </div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.job_3__details}}
+
+</p>
+
+</div>
+
+</div>
+
+{% endif %}
+
+{% if resume_info.references %}
+<div class="resume-group">
+
+ <div class="left-col">
+
+ <p>REFERENCES</p>
+
+ </div>
+
+ <div class="right-col">
+
+ <p>{{resume_info.references}}</p>
+
+ </div>
+
+</div>
+{% endif %}
+
+</div>
+<div class="col-md-12 text-center mb-3">
+	<button class="btn btn-success" id="download"> download pdf</button>
+</div>
+<div class="col-md-12 text-center mb-3">
+    <a class="btn btn-danger" id="download" href="/"> Back to home</a>
+</div>
+<!-- <div class="instructions">Ctrl + P and "Save As PDF" to make a copy of this resume</div><br>
+<a class="button" href="/dpdf/">Click here to Download your Resume</a> -->
+
+<!-- <div class="left-col">
+    <a class="button" style="float:right   ;" href="/index/"></a>
+</div> -->
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

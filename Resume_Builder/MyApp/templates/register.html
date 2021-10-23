@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+ <head>
+
+ <meta charset="utf-8"/>
+
+ <title>
+
+Resume Builder
+
+ </title>
+
+ <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+ </head>
+
+ <body style="background-color: rgb(254,235,238)">
+
+ <!-- partial:index.partial.html -->
+
+ <div id="javascript_header">
+
+ </div>
+
+ 
+
+ <form method="POST">
+
+    <div class="col-md-12 pt-3" style="padding-left: 550px;">
+        <a class="btn btn-danger"href="/"> x</a>
+    </div>
+ {% csrf_token %}
+
+ <div class="form__header">
+
+ <h1>
+
+ Register/Sign Up
+</h1>
+{% for message in messages %}
+
+<li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:red;">{{ message }}</li>
+   
+{% endfor %}
+
+
+ <input type="text" name="username" placeholder="UserName"><br>
+ <input type="text" name="first_name" placeholder="First Name"><br>
+ <input type="text" name="last_name" placeholder="Last Name"><br>
+ <input type="text" name="email" placeholder="Email"><br>
+ <input type="password" name="pass1" placeholder="Enter your Password"><br>
+ <input type="password" name="pass2" placeholder="Confirm Password"><br><br>
+
+ <input class="btn btn-success" type="submit" value="Register"/><br><br>
+ <span> Already have an account?
+ <a class="btn btn-success" href="/login/" >Login</a></span>
+ </form>
+
+
+ <!-- partial -->
+
+ <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>
