@@ -13,7 +13,8 @@ class Resume(models.Model):
     about_you = models.TextField(max_length=1000)
     skills = models.TextField(max_length=1000)
     experience = models.TextField(max_length=1000)
-    cv_img = models.ImageField(null=True,blank=True)
+    # cv_img = models.ImageField(null=True,blank=True)
+    
 
     def __str__(self):
         return self.name
