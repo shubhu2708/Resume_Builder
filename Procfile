@@ -1,0 +1,1 @@
+web: gunicorn Resume_Bulider.wsgi
